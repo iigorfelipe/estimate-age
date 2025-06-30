@@ -14,13 +14,13 @@
 
 	.icons {
 		font-size: 2.25rem;
-		color: #10b981;
+		color: var(--color-primary);
 	}
 
 	h1 {
 		font-size: 1.875rem;
 		font-weight: 700;
-		background: linear-gradient(to right, #10b981, #0d9488);
+		background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
 		background-clip: text;
 		color: transparent;
 	}

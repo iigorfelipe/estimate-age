@@ -31,7 +31,7 @@
 		padding: 1.5rem;
 		background: linear-gradient(to right, #ecfdf5, #f0fdfa);
 		border-radius: 0.75rem;
-		border: 1px solid #a7f3d0;
+		border: 1px solid var(--color-border);
 		gap: 0.5rem;
 		display: flex;
 		flex-direction: column;
@@ -46,7 +46,7 @@
 	.result-card-age {
 		font-size: 2.25rem;
 		font-weight: 700;
-		background: linear-gradient(to right, #10b981, #0d9488);
+		background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
 		background-clip: text;
 		color: transparent;
 	}
@@ -56,7 +56,7 @@
 		font-size: 0.875rem;
 		height: 2.5rem;
 		padding: 0.5rem 1rem;
-		border: 1px solid #a7f3d0;
+		border: 1px solid var(--color-border);
 		background-color: transparent;
 		cursor: pointer;
 		transition:

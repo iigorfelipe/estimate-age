@@ -136,8 +136,8 @@
 
 	main input:focus {
 		outline: none;
-		border-color: #10b981;
-		box-shadow: 0 0 0 1px #10b981;
+		border-color: var(--color-primary);
+		box-shadow: 0 0 0 1px var(--color-primary);
 	}
 
 	.info-text {
@@ -154,7 +154,7 @@
 	}
 
 	.loading-container span {
-		color: #10b981;
+		color: var(--color-primary);
 		font-size: 1rem;
 	}
 </style>
