@@ -1,50 +1,57 @@
 <script>
-	import { tick } from 'svelte';
+	import { tick, onDestroy } from 'svelte';
 	import { navigating } from '$app/stores';
-	import { goto } from '$app/navigation';
+	import { goto, afterNavigate } from '$app/navigation';
 	import MainHeader from '$lib/components/main-header.svelte';
 	import ResultCard from '$lib/components/result-card.svelte';
 
 	export let data;
 
 	let inputValue = data.name;
-	let debounceValue = data.name;
 	let isFocused = false;
 	let shouldFocusInput = false;
 	let inputRef;
 	let debounceTimeout;
 
-	$: if (inputValue !== undefined) {
-		clearTimeout(debounceTimeout);
-		debounceTimeout = setTimeout(() => {
-			debounceValue = inputValue;
-		}, 800);
+	const DEBOUNCE_DELAY = 800;
+
+	function handleClear() {
+		inputValue = '';
+		shouldFocusInput = true;
+		updateURLWithName('');
 	}
 
-	$: if (debounceValue !== undefined && debounceValue !== data.name) {
+	function updateURLWithName() {
 		const params = new URLSearchParams(window.location.search);
-		if (debounceValue) {
-			params.set('name', debounceValue);
+		const validValue = inputValue.trim();
+
+		if (validValue) {
+			params.set('name', validValue);
 		} else {
 			params.delete('name');
 		}
 		goto(`/?${params.toString()}`, { replaceState: true });
 	}
 
-	$: if (shouldFocusInput) {
-		tick().then(() => {
-			inputRef?.focus();
-			shouldFocusInput = false;
-		});
+	function handleInput() {
+		clearTimeout(debounceTimeout);
+
+		debounceTimeout = setTimeout(() => {
+			updateURLWithName();
+		}, DEBOUNCE_DELAY);
 	}
 
-	function handleClear() {
-		inputValue = '';
-		const params = new URLSearchParams(window.location.search);
-		params.delete('name');
-		shouldFocusInput = true;
-		goto(`/?${params.toString()}`, { replaceState: true });
-	}
+	afterNavigate(async () => {
+		if (shouldFocusInput) {
+			await tick();
+			inputRef?.focus();
+			shouldFocusInput = false;
+		}
+	});
+
+	onDestroy(() => {
+		clearTimeout(debounceTimeout);
+	});
 </script>
 
 <div class="container">
@@ -56,8 +63,9 @@
 
 			<input
 				type="text"
-				placeholder={!isFocused && !inputValue ? 'Digite um nome...' : ''}
+				placeholder={!isFocused ? 'Digite um nome...' : ''}
 				bind:value={inputValue}
+				on:input={handleInput}
 				bind:this={inputRef}
 				on:focus={() => (isFocused = true)}
 				on:blur={() => (isFocused = false)}
