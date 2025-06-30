@@ -1,38 +1,56 @@
-# sv
+<div align="center">
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+# 👶 Estimativa de Idade 🧓
 
-## Creating a project
+</div>
 
-If you're seeing this, you've probably already done this step. Congrats!
+<div align="center">
+<img src="https://github.com/user-attachments/assets/98f2293f-1337-4624-a0b0-308b06506922" alt="Preview do projeto" />
+</div>
+
+<p align="center">
+  <a href="https://estimate-age.vercel.app/" target="_blank">🔗 Acesse o site</a>
+</p>
+
+---
+
+## 📄 Sobre o Projeto
+
+**Estimativa de Idade** é uma aplicação web que estima a **idade média de pessoas com um determinado nome**, utilizando a API gratuita [Agify](https://agify.io/documentation).
+
+Este projeto foi desenvolvido como parte de um desafio técnico com os seguintes requisitos:
+
+- Utilizar **Svelte 4 ou 5** com **SvelteKit**
+- Consumir a API via `load()`
+- Implementar **debounce** de requisição
+- Refletir o nome na **URL (querystring)**
+
+---
+
+## 🚀 Rodando Localmente:
+
+1. Clone o repositório:
 
 ```bash
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
+git@github.com:iigorfelipe/estimate-age.git
 ```
 
-## Developing
+2. Instale as dependências:
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+```bash
+cd estimate-age
+npm install
+```
+
+3. Execute o projeto:
 
 ```bash
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
+## 👨‍💻 Autor
 
-To create a production version of your app:
+**@Igor Soares**
 
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+[![Linkedin Badge](https://img.shields.io/badge/-LinkdedIn-blue?style=for-the-badge&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/iigor-felipe/)](https://www.linkedin.com/in/iigor-felipe/)
+[![Gmail Badge](https://img.shields.io/badge/-Gmail-c14438?style=for-the-badge&logo=Gmail&logoColor=white&link=mailto:iigorfelipe@gmail.com)](mailto:iigorfelipe@gmail.com)
